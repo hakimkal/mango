@@ -70,7 +70,6 @@ defmodule MangoWeb.OrderpageTest do
     find_within_element(form, :tag, "button")
     |> click
 
-
     navigate_to("/orders")
 
     assert current_path() == "/orders"

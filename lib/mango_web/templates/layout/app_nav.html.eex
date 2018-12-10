@@ -29,7 +29,7 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= @customer.name %><span class="caret"></span></a>
                   <ul class="dropdown-menu">
 
-<li><%= link "My Orders", to: Routes.order_path(@conn, :index) %></li>
+<li><%= link "My Orders", to: Routes.order_path(@conn, :index), class: "myorders" %></li>
 
 
                     <li><%= link "Log Out", to: "/logout" %></li>
