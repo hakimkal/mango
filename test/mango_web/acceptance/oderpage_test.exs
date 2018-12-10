@@ -149,11 +149,13 @@ defmodule MangoWeb.OrderpageTest do
 
 
     table = find_element(:css, ".table")
-    page_title = find_element(:css, ".page-title") |> visible_text()
+    page_title = find_element(:css, ".page-title")
+                 |> visible_text()
     assert page_title == "Order ##{order.id} Details"
     order_detail = find_within_element(table, :css, ".order-detail")
-    product_name  = find_within_element(order_detail, :css, ".product-name") |> visible_text()
-   assert  product_name == "Tomato"
+    product_name = find_within_element(order_detail, :css, ".product-name")
+                   |> visible_text()
+    assert  product_name == "Tomato"
 
 
 
