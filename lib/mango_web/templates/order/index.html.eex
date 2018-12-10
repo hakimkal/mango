@@ -1,0 +1,36 @@
+
+<h1 class="page-title">My Orders </h1>
+
+<%= if Enum.empty?(@orders) do %>
+<p>You have not ordered anything from us!</p>
+ <% else %>
+
+
+
+ <table class="table">
+<thead>
+<tr>
+<th>Order ID </th>
+ <th>Status </th>
+ <th>Products Ordered</th>
+<th>Total</th>
+<th>View</th>
+          </tr>
+        </thead>
+<tbody>
+<%= for  o <- @orders  do  %>
+          <tr class="order">
+            <td class="order-id"><%= o.id %></td>
+            <td class="order-status"><%= o.status %></td>
+            <td class="line-item-count"><%= Enum.count(o.line_items) %></td>
+            <td class="order-total"><%= o.total %></td>
+            <td class="order-view-link"><%= link "view" ,to: Routes.order_path(@conn, :show,o.id) %></td>
+            </tr>
+
+<% end %>
+
+         </tbody>
+       </table>
+
+
+ <% end %>
