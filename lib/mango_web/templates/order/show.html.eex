@@ -1,1 +1,33 @@
-<h1> Order Details</h1>
+<h1 class="page-title"> Order #<%= @order.id %> Details</h1>
+
+
+ <table class="table">
+<thead>
+<tr>
+
+ <th>ID </th>
+ <th>Product</th>
+ <th>Pack Size</th>
+ <th>Price</th>
+ <th>Qty</th>
+<th>Total</th>
+
+          </tr>
+        </thead>
+<tbody>
+<%= for  o <- @order.line_items  do  %>
+          <tr class="order-detail">
+            <td class="order-id"><%= o.product_id %></td>
+            <td class="product-name"><%= o.product_name %></td>
+            <td class="order-status"><%= o.pack_size %></td>
+            <td class="order-status"><%= o.unit_price %></td>
+            <td class="order-status"><%= o.quantity %></td>
+
+            <td class="order-total"><%= o.total %></td>
+
+            </tr>
+
+<% end %>
+
+         </tbody>
+       </table>

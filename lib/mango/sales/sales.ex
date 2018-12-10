@@ -76,7 +76,7 @@ defmodule Mango.Sales do
   def get_order_by_id(id) do
 
     Order
-    |> Repo.get_by(Order, id)
+    |> Repo.get_by(id: id)
 
 
   end
