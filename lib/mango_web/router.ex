@@ -26,17 +26,17 @@ defmodule MangoWeb.Router do
     get "/", PageController, :index
     get "/categories/:name", CategoryController, :show
 
-    get "/register" , RegistrationController, :new
+    get "/register", RegistrationController, :new
     post "/register", RegistrationController, :create
 
-    get "/login" , SessionController, :new
-    post "/login" , SessionController, :create
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
 
 
 
     post "/cart", CartController, :add
     get "/cart", CartController, :show
-    put "/cart" , CartController, :update
+    put "/cart", CartController, :update
 
   end
 
@@ -44,11 +44,13 @@ defmodule MangoWeb.Router do
     pipe_through [:browser, :frontend, MangoWeb.Plugs.AuthenticateCustomer]
 
     get "/logout", SessionController, :delete
-    get "/orders", OrderController ,:index
-    get "/orders/:id", OrderController ,:show
+    get "/orders", OrderController, :index
+    get "/orders/:id", OrderController, :show
 
-    get "/checkout" , CheckoutController, :edit
-    put "/checkout/confirm" , CheckoutController, :update
+    resources "/tickets", TicketController , except: [:edit, :update, :delete]
+
+    get "/checkout", CheckoutController, :edit
+    put "/checkout/confirm", CheckoutController, :update
 
   end
 

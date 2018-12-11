@@ -12,8 +12,15 @@
   <body>
     <%= render "app_nav.html" , conn: @conn, customer: @current_customer %>
     <main role="main" class="container">
+
+<% if get_flash(@conn, :info) do   %>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+
+      <% end %>
+
+<% if get_flash(@conn, :error) do   %>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+<% end %>
       <%= render @view_module, @view_template, assigns %>
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
