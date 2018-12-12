@@ -1,6 +1,7 @@
 defmodule Mango.CRM do
   alias Mango.CRM.Customer
   alias Mango.Repo
+  #09553665
 
   def build_customer(attrs \\ %{}) do
 
@@ -34,23 +35,14 @@ defmodule Mango.CRM do
 
   alias Mango.CRM.Ticket
 
-  @doc """
-  Returns the list of tickets.
-
-  ## Examples
-
-      iex> list_tickets()
-      [%Ticket{}, ...]
-
-  """
-  def list_customer_tickets(customer) do
+  def list_customer_tickets(%Customer{} = customer) do
     customer
-    Ecto.assoc(:tickets)
+    |> Ecto.assoc(:tickets)
     |> Repo.all(Ticket)
   end
 
 
-  def get_customer_ticket!(customer, id) do
+  def get_customer_ticket!(%Customer{} = customer, id) do
     customer
     |> Ecto.assoc(:tickets)
     |> Repo.get!(Ticket, id)

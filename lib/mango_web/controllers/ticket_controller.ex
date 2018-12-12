@@ -7,7 +7,7 @@ defmodule MangoWeb.TicketController do
 
   def index(conn, _params) do
     customer = conn.assigns.current_customer
-    tickets = CRM.list_customer_tickets()
+    tickets = CRM.list_customer_tickets(customer)
     render(conn, "index.html", tickets: tickets)
   end
 
